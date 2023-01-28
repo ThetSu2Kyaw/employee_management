@@ -1,0 +1,21 @@
+extend type Query{
+    employees: [Employee!]! @field(resolver: "EmployeeQuery@all")
+    employee(eeid: ID!): Employee @field(resolver: "EmployeeQuery@find")
+}
+
+type Mutation{
+    createEmployee(eeid: ID!, full_name: String!, job_title: String!, gender: String!, age: Int!, hire_date: Date!, annual_salary: String!, bonus: String!): Employee @create
+    updateEmployee(eeid: ID!, full_name: String, job_title: String, gender: String, age: Int, hire_date: Date, annual_salary: String, bonus: String): Employee @update
+    deleteEmployee(eeid: ID!): Employee @delete
+}
+
+type Employee{
+  eeid: ID!
+  full_name: String!
+  job_title: String!
+  gender: String!
+  age: Int!
+  hire_date: Date!
+  annual_salary: String!
+  bonus: String!
+}
